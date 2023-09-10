@@ -1,0 +1,109 @@
+@mixin transition($type:all) {
+    -moz-transition: $type 0.2s linear;
+    -o-transition: $type 0.2s linear;
+    -webkit-transition: $type 0.2s linear;
+    transition: $type 0.2s linear;
+}
+
+.sidebar-form {
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 2;
+    height: calc(100vh);
+    width: 0;
+    visibility: hidden;
+    background-color: #ffffff;
+    box-shadow: var(--box-shadow);
+    @include transition;
+    padding: 0;
+    .sidebar-inner-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+    }
+    .sidebar-bg {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0;
+        pointer-events: none;
+        @include transition(visibility);
+        background: rgba(0, 0, 0, .15);
+    }
+    .form-header {
+        margin-bottom: 15px;
+        padding: 15px 30px;
+        border-bottom: 1px solid var(--icon-primary-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &.active {
+        visibility: visible;
+        width: var(--form-width);
+        .sidebar-bg {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .form-field-group {
+        display: inline-block;
+        width: var(--field-with);
+        position: relative;
+    }
+    .d-block {
+        display: block;
+        width: 100%;
+    }
+    .form-inner {
+        height: 100%;
+        width: 100%;
+        padding: 0 15px;
+        overflow-y: auto;
+        position: absolute;
+    }
+    .form-title {
+        font-size: 28px;
+        margin-bottom: 0;
+    }
+    .error {
+        position: absolute;
+        top: 0;
+        right: 15px;
+    }
+}
+
+.close-botton {
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    outline: none;
+    border: none;
+    color: var(--icon-primary-color);
+    background: transparent;
+    font-size: 35px;
+}
+
+.form-error {
+    border-color: var(--error-color);
+}
+
+.error,
+.required {
+    color: var(--error-color);
+    padding: 5px 0;
+}
+
+.error {
+    display: block;
+}

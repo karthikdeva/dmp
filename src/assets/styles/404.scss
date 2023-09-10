@@ -1,0 +1,28 @@
+.page-404 {
+    padding-top: 5rem;
+    .page-title,
+    .btn {
+        margin-top: 1.5rem;
+    }
+    .icon-large {
+        font-size: 10rem;
+        margin-top: 1.5rem;
+        // &::before {
+        //     animation: toggleIcon 6s linear infinite;
+        // }
+    }
+}
+
+@keyframes toggleIcon {
+    0% {
+        content: "\f5af";
+        margin-left: -100px;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        content: "\e069";
+        margin-left: 0px;
+    }
+}
